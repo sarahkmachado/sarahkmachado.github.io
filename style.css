@@ -1,6 +1,10 @@
 body
 {
-   background-color: #696969;
+   background-color: #c00e0e;
    color: #696969;
 
+}
+h1 {
+   background-color: yellow;
+   color: #0f49a1;
 }
