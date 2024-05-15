@@ -8,10 +8,7 @@ h1 {
    color: #ffffff;
 }
 
-h2 { 
-   background-color: aquamarine;
-   color: #FFFFFF;
-}
+
 h3 { 
    background-color: aquamarine;
    color: #FFFFFF;
@@ -20,6 +17,7 @@ h4 {
    background-color: aquamarine;
    color: #FFFFFF;
 }
+
 img{
    width: 100px;
    height: 100px;
