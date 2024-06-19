@@ -1,58 +1,113 @@
-const botoes = document.querySelectorAll(".botao");
-const textos = document.querySelectorAll(".aba-conteudo");
+const caixaPrincipal = document.querySelector(".caixa-principal");
+const caixaPerguntas = document.querySelector(".caixa-perguntas");
+const caixaAlternativas = document.querySelector(".caixa-alternativas");
+const caixaResultado = document.querySelector(".caixa-resultado");
+const textoResultado = document.querySelector(".texto-resultado");
 
-for (let i = 0; i < botoes.length; i++) {
-    botoes[i].onclick = function () {
+const perguntas = [
+    {
+        enunciado: "no hip hop existe varios tipos de SUBGÊNEROS entre trap e boombap qual você escolhe?",
+        alternativas: [
+            {
+                texto: "o bagulho é trap",
+                afirmacao: "BRABO TRAP É SUPERIOR, "
+            },
+            {
+                texto: "o bagulho é boombap",
+                afirmacao: "QUENTE BOOMBAP É SUPERIOR, "
+            }
+        ]
+    },
+    {
+        enunciado: "Esscolha um cantor",
+        alternativas: [
+            {
+                texto: "TRAP - Blueface",
+                afirmacao: "Blueface é zika mesmo, "
+            },
+            {
+                texto: "BOOMBAP - Pumapjl",
+                afirmacao: "Pumapjl é zika mesmo, "
+            }
+        ]
+    },
+    {
+        enunciado: "Oque você acha das letras no hiphop?",
+        alternativas: [
+            {
+                texto: "muito boas ",
+                afirmacao: "Sim adoro as letras que falam de drgoas e bithesssss, "
+            },
+            {
+                texto: "Escuto pelas batidas",
+                afirmacao: "Batida envolvente e letras fracas de baixo calão, "
+            }
+        ]
+    },
+    {
+        enunciado: "Oque vocẽ acha de batalha de rima?",
+        alternativas: [
+            {
+                texto: "Ṕerca de tempo",
+                afirmacao: "Sou CLT não tenho tempo para bobalhada de rimas, "
+            },
+            {
+                texto: "Mo daora slk",
+                afirmacao: "Slk Muito daora os manos são muito foda rimano, "
+            }
+        ]
+    },
+    {
+        enunciado: "Você acha que hiphop tem haver com a erva magica? ",
+        alternativas: [
+            {
+                texto: "Sim",
+                afirmacao: "Todo mundo que escuta hiphop é maconheiro.  "
+            },
+            {
+                texto: "Não",
+                afirmacao: "Acho que não tem nada haver quem escuta hiphop é maconheiro. "
+            }
+        ]
+    },
+];
 
-        for (let j = 0; j < botoes.length; j++) {
-            botoes[j].classList.remove("ativo");
-            textos[j].classList.remove("ativo");
-        }
 
-        botoes[i].classList.add("ativo");
-        textos[i].classList.add("ativo");
+let atual = 0;
+let perguntaAtual;
+let historiaFinal = "";
+
+function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
+    mostraAlternativas();
+}
+
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativas.appendChild(botaoAlternativas);
     }
 }
 
-const contadores = document.querySelectorAll(".contador");
-const tempoObjetivo1 = new Date("2024-10-05T00:00:00");
-const tempoObjetivo2 = new Date("2024-12-05T00:00:00");
-const tempoObjetivo3 = new Date("2024-12-30T00:00:00");
-const tempoObjetivo4 = new Date("2025-02-01T00:00:00");
-
-const tempos = [tempoObjetivo1,tempoObjetivo2,tempoObjetivo3,tempoObjetivo4];
-
-
-function calculaTempo(tempoObjetivo) {
-    let tempoAtual = new Date();
-    let tempoFinal = tempoObjetivo - tempoAtual;
-    let segundos = Math.floor(tempoFinal / 1000);
-    let minutos = Math.floor(segundos / 60);
-    let horas = Math.floor(minutos / 60);
-    let dias = Math.floor(horas / 24);
-
-    segundos %= 60;
-    minutos %= 60;
-    horas %= 24;
-    if (tempoFinal > 0){
-        return [dias,horas,minutos,segundos];
-    } else {
-        return [0,0,0,0];
-    }
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historiaFinal += afirmacoes + " ";
+    atual++;
+    mostraPergunta();
 }
 
-function atualizaCronometro(){
-    for (let i=0; i<contadores.length;i++){
-        document.getElementById("dias"+i).textContent = calculaTempo(tempos[i])[0];
-        document.getElementById("horas"+i).textContent = calculaTempo(tempos[i])[1];
-        document.getElementById("min"+i).textContent = calculaTempo(tempos[i])[2];
-        document.getElementById("seg"+i).textContent = calculaTempo(tempos[i])[3];   
-    }
+function mostraResultado() {
+    caixaPerguntas.textContent = "Em 2049...";
+    textoResultado.textContent = historiaFinal;
+    caixaAlternativas.textContent = "";
 }
 
-function comecaCronometro(){
-    atualizaCronometro();
-    setInterval(atualizaCronometro,1000);
-}
-
-comecaCronometro();
+mostraPergunta();
