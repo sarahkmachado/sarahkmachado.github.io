@@ -70,6 +70,71 @@ const perguntas = [
             }
         ]
     },
+    {
+        enunciado: "pq o nome dele é blueface",
+        alternativas: [
+            {
+                texto: "Pq ele tem o rosto azul",
+                afirmacao: "vdd é isso memo"
+            },
+            {
+                texto: "pq ele é um criminoso gangstar que participa de uma gang chamada cripy",
+                afirmacao: "ele é perigoso"
+            }
+        ]
+    },
+    {
+        enunciado: "Complete a frase (Caneta ..... ..... Caneta)",
+        alternativas: [
+            {
+                texto: "Azul - Azul",
+                afirmacao: "caneta azul azul caneta"
+            },
+            {
+                texto: "Schnitzel - Schnitzel",
+                afirmacao: "Cante chnitzel chnitzel Caneta"
+            }
+        ]
+    },
+    {
+        enunciado: "quem falou essa frase (Mlk calvo não cola com nois)",
+        alternativas: [
+            {
+                texto: "Derek",
+                afirmacao: "The fato não colamos com calvo"
+            },
+            {
+                texto: "Justin bieber",
+                afirmacao: "Ele nem fala brasileiro KAKAKAKA"
+            }
+        ]
+    },
+    {
+        enunciado: "Cante azul vai ter filho? liltle bluepen",
+        alternativas: [
+            {
+                texto: "Sim, ele vai soltar mt tinta",
+                afirmacao: "O caneta soltou a tinta"
+            },
+            {
+                texto: "Não ele é de deus",
+                afirmacao: "Até parece KAKAKAKA"
+            }
+        ]
+    },
+    {
+        enunciado: "Seggundoo Luckhaos ele etava batendo punhe Aonde?",
+        alternativas: [
+            {
+                texto: "No Ventilador",
+                afirmacao: "Ta certo"
+            },
+            {
+                texto: "No microondas",
+                afirmacao: "Errado "
+            }
+        ]
+    },
 ];
 
 
